@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopify Upgrade Versions | Enhanced E-commerce Solutions</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+line-height: 1.6;
+color: #202223;
+background: #f6f6f7;
+}
+.header {
+background: #ffffff;
+padding: 1.25rem 5%;
+box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+position: sticky;
+top: 0;
+z-index: 100;
+}
+.nav-container {
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.logo {
+font-size: 1.75rem;
+font-weight: 700;
+color: #008060;
+text-decoration: none;
+letter-spacing: -0.5px;
+}
+.contact-header-btn {
+padding: 0.625rem 1.25rem;
+background: #008060;
+color: white;
+text-decoration: none;
+border-radius: 6px;
+font-weight: 600;
+font-size: 0.9rem;
+transition: background 0.2s, transform 0.1s;
+}
+.contact-header-btn:hover {
+background: #006e52;
+transform: translateY(-1px);
+}
+.hero {
+background: linear-gradient(135deg, #004c3f 0%, #008060 50%, #00a67c 100%);
+color: white;
+padding: 5rem 5% 6rem;
+text-align: center;
+}
+.hero-content {
+max-width: 900px;
+margin: 0 auto;
+}
+.hero h1 {
+font-size: 3.5rem;
+margin-bottom: 1.25rem;
+font-weight: 700;
+letter-spacing: -1px;
+}
+.hero p {
+font-size: 1.35rem;
+margin-bottom: 1rem;
+opacity: 0.95;
+line-height: 1.5;
+}
+.hero-subtext {
+font-size: 1rem;
+opacity: 0.85;
+margin-top: 1.5rem;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 4rem 5%;
+}
+.section-header {
+text-align: center;
+margin-bottom: 3.5rem;
+}
+.section-title {
+font-size: 2.75rem;
+margin-bottom: 1rem;
+color: #202223;
+font-weight: 700;
+letter-spacing: -0.5px;
+}
+.section-subtitle {
+font-size: 1.25rem;
+color: #6d7175;
+max-width: 700px;
+margin: 0 auto;
+}
+.versions-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2rem;
+margin-bottom: 3rem;
+}
+.version-card {
+background: white;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+transition: transform 0.3s, box-shadow 0.3s;
+cursor: pointer;
+}
+.version-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.version-header {
+padding: 2rem;
+background: linear-gradient(135deg, #f6f6f7 0%, #ffffff 100%);
+border-bottom: 3px solid #008060;
+}
+.version-card.plus .version-header {
+background: linear-gradient(135deg, #004c3f 0%, #008060 100%);
+color: white;
+border-bottom: 3px solid #00d4aa;
+}
+.version-badge {
+display: inline-block;
+padding: 0.35rem 0.75rem;
+background: #008060;
+color: white;
+border-radius: 20px;
+font-size: 0.75rem;
+font-weight: 600;
+margin-bottom: 1rem;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+}
+.version-card.plus .version-badge {
+background: #00d4aa;
+color: #004c3f;
+}
+.version-name {
+font-size: 2rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+color: #202223;
+}
+.version-card.plus .version-name {
+color: white;
+}
+.version-year {
+font-size: 0.95rem;
+color: #6d7175;
+font-weight: 500;
+}
+.version-card.plus .version-year {
+color: rgba(255,255,255,0.85);
+}
+.version-content {
+padding: 2rem;
+}
+.version-description {
+font-size: 1rem;
+color: #6d7175;
+margin-bottom: 1.5rem;
+line-height: 1.6;
+}
+.features-toggle {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.4s ease-out;
+}
+.features-toggle.active {
+max-height: 2000px;
+transition: max-height 0.6s ease-in;
+}
+.features-list {
+margin: 1.5rem 0;
+padding: 1.5rem;
+background: #f6f6f7;
+border-radius: 8px;
+}
+.feature-item {
+display: flex;
+align-items: flex-start;
+margin-bottom: 1rem;
+gap: 0.75rem;
+}
+.feature-item:last-child {
+margin-bottom: 0;
+}
+.feature-icon {
+width: 24px;
+height: 24px;
+background: #008060;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 0.75rem;
+flex-shrink: 0;
+margin-top: 2px;
+}
+.feature-text {
+color: #202223;
+font-size: 0.95rem;
+line-height: 1.5;
+}
+.btn-expand {
+width: 100%;
+padding: 0.875rem;
+background: #f6f6f7;
+color: #008060;
+border: 2px solid #008060;
+border-radius: 6px;
+font-weight: 600;
+font-size: 0.95rem;
+cursor: pointer;
+transition: all 0.2s;
+margin-bottom: 1rem;
+}
+.btn-expand:hover {
+background: #008060;
+color: white;
+}
+.btn-expand.active {
+background: #008060;
+color: white;
+}
+.btn-get-upgrade {
+width: 100%;
+padding: 1rem;
+background: #008060;
+color: white;
+text-decoration: none;
+border-radius: 6px;
+font-weight: 600;
+font-size: 1rem;
+text-align: center;
+display: block;
+transition: background 0.2s, transform 0.1s;
+}
+.btn-get-upgrade:hover {
+background: #006e52;
+transform: translateY(-2px);
+}
+.version-card.plus .btn-get-upgrade {
+background: #00d4aa;
+color: #004c3f;
+}
+.version-card.plus .btn-get-upgrade:hover {
+background: #00c29a;
+}
+.info-banner {
+background: linear-gradient(135deg, #e8f5f1 0%, #d4ede5 100%);
+border: 2px solid #008060;
+border-radius: 12px;
+padding: 2rem;
+text-align: center;
+margin: 3rem 0;
+}
+.info-banner h3 {
+color: #004c3f;
+font-size: 1.5rem;
+margin-bottom: 0.75rem;
+}
+.info-banner p {
+color: #202223;
+font-size: 1.1rem;
+margin-bottom: 1.25rem;
+}
+.info-banner a {
+color: #008060;
+font-weight: 600;
+text-decoration: none;
+border-bottom: 2px solid #008060;
+}
+.info-banner a:hover {
+color: #006e52;
+border-bottom-color: #006e52;
+}
+.cta-section {
+background: linear-gradient(135deg, #004c3f 0%, #008060 50%, #00a67c 100%);
+color: white;
+padding: 5rem 5%;
+text-align: center;
+}
+.cta-content {
+max-width: 800px;
+margin: 0 auto;
+}
+.cta-section h2 {
+font-size: 3rem;
+margin-bottom: 1.25rem;
+font-weight: 700;
+}
+.cta-section p {
+font-size: 1.35rem;
+margin-bottom: 2.5rem;
+opacity: 0.95;
+line-height: 1.5;
+}
+.btn-cta {
+display: inline-block;
+padding: 1.125rem 3rem;
+background: white;
+color: #008060;
+text-decoration: none;
+border-radius: 6px;
+font-size: 1.125rem;
+font-weight: 700;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-cta:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.footer {
+background: #ffffff;
+padding: 2.5rem 5%;
+text-align: center;
+border-top: 1px solid #e1e3e5;
+}
+.footer p {
+color: #6d7175;
+font-size: 0.95rem;
+}
+@media (max-width: 768px) {
+.hero h1 {
+font-size: 2.25rem;
+}
+.section-title {
+font-size: 2rem;
+}
+.cta-section h2 {
+font-size: 2rem;
+}
+.versions-grid {
+grid-template-columns: 1fr;
+}
+}
+</style>
+</head>
+<body>
+<header class="header">
+<nav class="nav-container">
+<a href="#" class="logo">Shopify</a>
+<a href="mailto:yourshopifymail@gmail.com?subject=Contact%20Us%20-%20Shopify%20Upgrades" class="contact-header-btn">Contact Us</a>
+</nav>
+</header>
+<section class="hero">
+<div class="hero-content">
+<h1>Unlock Your Store's Full Potential</h1>
+<p>Discover our premium upgrade versions designed to scale your business and maximize your success</p>
+<p class="hero-subtext">Choose the perfect plan that matches your ambitions and growth goals</p>
+</div>
+</section>
+<section class="container">
+<div class="section-header">
+<h2 class="section-title">Available Upgrade Versions</h2>
+<p class="section-subtitle">Each version is packed with powerful features to help you sell more, manage better, and grow faster</p>
+</div>
+<div class="versions-grid">
+<!-- Shopify Basic -->
+<div class="version-card">
+<div class="version-header">
+<span class="version-badge">Starter</span>
+<h3 class="version-name">Shopify Basic</h3>
+<p class="version-year">Released 2020</p>
+</div>
+<div class="version-content">
+<p class="version-description">Perfect for new businesses starting their e-commerce journey with essential tools and features.</p>
+<button class="btn-expand" onclick="toggleFeatures(this)">View Features</button>
+<div class="features-toggle">
+<div class="features-list">
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Unlimited products and bandwidth</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">2 staff accounts for team collaboration</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">24/7 customer support via email and chat</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Sales channels integration (online store, social media)</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Manual order creation and management</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Discount codes and gift cards</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Free SSL certificate for secure checkout</span>
+</div>
+</div>
+</div>
+<a href="mailto:yourshopifymail@gmail.com?subject=Interested%20in%20Shopify%20Basic%20Upgrade&body=Hi,%0D%0A%0D%0AI'm%20interested%20in%20learning%20more%20about%20the%20Shopify%20Basic%20upgrade.%0D%0A%0D%0AThank%20you!" class="btn-get-upgrade">Get This Upgrade</a>
+</div>
+</div>
+<!-- Shopify Standard -->
+<div class="version-card">
+<div class="version-header">
+<span class="version-badge">Popular</span>
+<h3 class="version-name">Shopify</h3>
+<p class="version-year">Released 2021</p>
+</div>
+<div class="version-content">
+<p class="version-description">The most popular choice for growing businesses that need more features and better reporting tools.</p>
+<button class="btn-expand" onclick="toggleFeatures(this)">View Features</button>
+<div class="features-toggle">
+<div class="features-list">
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Everything in Basic, plus enhanced capabilities</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">5 staff accounts with role-based permissions</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Professional reports and analytics dashboard</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Lower credit card transaction fees</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Gift card creation and management</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Abandoned cart recovery to boost sales</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Advanced inventory management</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">International selling with multiple currencies</span>
+</div>
+</div>
+</div>
+<a href="mailto:yourshopifymail@gmail.com?subject=Interested%20in%20Shopify%20Standard%20Upgrade&body=Hi,%0D%0A%0D%0AI'm%20interested%20in%20learning%20more%20about%20the%20Shopify%20Standard%20upgrade.%0D%0A%0D%0AThank%20you!" class="btn-get-upgrade">Get This Upgrade</a>
+</div>
+</div>
+<!-- Shopify Advanced -->
+<div class="version-card">
+<div class="version-header">
+<span class="version-badge">Advanced</span>
+<h3 class="version-name">Shopify Advanced</h3>
+<p class="version-year">Released 2022</p>
+</div>
+<div class="version-content">
+<p class="version-description">Built for scaling businesses that require advanced reporting and lowest transaction fees.</p>
+<button class="btn-expand" onclick="toggleFeatures(this)">View Features</button>
+<div class="features-toggle">
+<div class="features-list">
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">All Shopify features with premium enhancements</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">15 staff accounts for larger teams</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Advanced report builder with custom reports</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Third-party calculated shipping rates</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Lowest credit card transaction fees available</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Advanced analytics and customer segmentation</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Real-time carrier shipping integration</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Priority customer support</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Multi-location inventory management</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Advanced fraud analysis tools</span>
+</div>
+</div>
+</div>
+<a href="mailto:yourshopifymail@gmail.com?subject=Interested%20in%20Shopify%20Advanced%20Upgrade&body=Hi,%0D%0A%0D%0AI'm%20interested%20in%20learning%20more%20about%20the%20Shopify%20Advanced%20upgrade.%0D%0A%0D%0AThank%20you!" class="btn-get-upgrade">Get This Upgrade</a>
+</div>
+</div>
+<!-- Shopify Plus -->
+<div class="version-card plus">
+<div class="version-header">
+<span class="version-badge">Enterprise</span>
+<h3 class="version-name">Shopify Plus</h3>
+<p class="version-year">Released 2024</p>
+</div>
+<div class="version-content">
+<p class="version-description">The ultimate enterprise solution with unlimited customization, dedicated support, and exclusive features for high-volume merchants.</p>
+<button class="btn-expand" onclick="toggleFeatures(this)">View Features</button>
+<div class="features-toggle">
+<div class="features-list">
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Everything in Advanced plus exclusive enterprise features</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Unlimited staff accounts for enterprise teams</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Dedicated account manager and launch engineer</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Custom checkout experiences with Checkout Extensibility</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Shopify Flow automation for complex workflows</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Launchpad for automated sales events and campaigns</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Unlimited API call limits for integrations</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">9 additional expansion stores at reduced cost</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Wholesale channel with B2B capabilities</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Advanced security features and compliance tools</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Priority access to beta features and new releases</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Custom integrations and API support</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Enterprise-grade hosting and 99.99% uptime SLA</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Advanced data and analytics with Data Pipeline</span>
+</div>
+<div class="feature-item">
+<span class="feature-icon">✓</span>
+<span class="feature-text">Exclusive Plus Partner ecosystem access</span>
+</div>
+</div>
+</div>
+<a href="mailto:yourshopifymail@gmail.com?subject=Interested%20in%20Shopify%20Plus%20Upgrade&body=Hi,%0D%0A%0D%0AI'm%20interested%20in%20learning%20more%20about%20the%20Shopify%20Plus%20upgrade.%0D%0A%0D%0AThank%20you!" class="btn-get-upgrade">Get This Upgrade</a>
+</div>
+</div>
+</div>
+<div class="info-banner">
+<h3>Need Help Choosing the Right Version?</h3>
+<p>Our team is ready to help you select the perfect upgrade for your business needs.</p>
+<a href="mailto:yourshopifymail@gmail.com?subject=Help%20Choosing%20Shopify%20Upgrade&body=Hi,%0D%0A%0D%0AI%20need%20help%20choosing%20the%20right%20Shopify%20upgrade%20for%20my%20business.%0D%0A%0D%0AThank%20you!">Contact us for personalized recommendations →</a>
+</div>
+</section>
+<section class="cta-section">
+<div class="cta-content">
+<h2>Ready to Upgrade Your Store?</h2>
+<p>Join thousands of successful merchants who have transformed their business with Shopify's premium features</p>
+<a href="mailto:yourshopifymail@gmail.com?subject=Ready%20to%20Upgrade%20My%20Shopify%20Store&body=Hi,%0D%0A%0D%0AI'm%20ready%20to%20upgrade%20my%20Shopify%20store%20and%20would%20like%20to%20discuss%20the%20options.%0D%0A%0D%0AThank%20you!" class="btn-cta">Contact Us Today</a>
+</div>
+</section>
+<footer class="footer">
+<p>&copy; 2025 Shopify Upgrades. Transform your e-commerce business with our premium solutions.</p>
+</footer>
+<script>
+function toggleFeatures(button) {
+const card = button.closest('.version-card');
+const featuresToggle = card.querySelector('.features-toggle');
+if (featuresToggle.classList.contains('active')) {
+featuresToggle.classList.remove('active');
+button.textContent = 'View Features';
+button.classList.remove('active');
+} else {
+featuresToggle.classList.add('active');
+button.textContent = 'Hide Features';
+button.classList.add('active');
+}
+}
+</script>
+</body>
+</html>
